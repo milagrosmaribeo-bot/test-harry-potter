@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Test Harry Potter Deluxe 🪄</title>
+<style>
+  body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: url('https://i.imgur.com/2oDDBY2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #f5f5f5;
+    overflow-x: hidden;
+  }
+  .container{
+    max-width:800px;
+    margin:auto;
+    padding:20px;
+    background: rgba(0,0,0,0.5);
+    border-radius:15px;
+    position: relative;
+    z-index:2;
+  }
+  h1,h2{text-align:center;color:gold;}
+  .inicio{
+    position:relative;
+    height:300px;
+  }
+  .flota{
+    position:absolute;
+    width:80px;
+    animation:flotar 4s ease-in-out infinite alternate;
+  }
+  @keyframes flotar{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-15px);}
+  }
+  .question{
+    margin-bottom:20px;
+    background: rgba(0,0,0,0.4);
+    padding:15px;
+    border-radius:10px;
+  }
+  label{display:block;margin:5px 0;cursor:pointer;}
+  button{
+    background: gold;
+    border:none;
+    padding:10px 20px;
+    font-size:18px;
+    border-radius:10px;
+    cursor:pointer;
+    display:block;
+    margin:10px auto;
+  }
+  #resultado{
+    margin-top:30px;
+    font-size:20px;
+    text-align:center;
+    position:relative;
+    min-height:200px;
+  }
+  .varita{
+    width:10px;
+    height:100px;
+    background:#8b5e3c;
+    margin:20px auto 0;
+    border-radius:5px;
+    transform:rotate(-45deg);
+    position: absolute;
+    left:50%;
+    transform:translateX(-50%) rotate(-45deg);
+  }
+  .chispa{
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:0;
+    animation:chispasAnim 0.8s ease-out forwards;
+  }
+  @keyframes chispasAnim{
+    0%{transform:translate(0,0) scale(1);opacity:1;}
+    100%{transform:translate(calc(var(--x)*20px),calc(var(--y)*-20px)) scale(0);opacity:0;}
+  }
+  .personaje-img{
+    max-width:200px;
+    display:block;
+    margin:10px auto;
+    border-radius:10px;
+    box-shadow:0 0 20px rgba(255,255,255,0.5);
+  }
+  .mini-img{
+    width:50px;
+    vertical-align:middle;
+    margin-right:10px;
+  }
+  /* partículas flotantes */
+  .particula{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    opacity:0.8;
+    animation:particulaAnim linear infinite;
+  }
+  @keyframes particulaAnim{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-600px);}
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>🪄 Test de Harry Potter Deluxe</h1>
+<div class="inicio">
+  <img src="https://i.imgur.com/Qt1iD7D.png" class="flota" style="top:30px; left:50px;"> <!-- sombrero -->
+  <img src="https://i.imgur.com/8JrG1wp.png" class="flota" style="top:80px; left:600px;"> <!-- varita -->
+  <img src="https://i.imgur.com/qzn0Vlm.png" class="flota" style="top:200px; left:300px;"> <!-- escoba -->
+  <h2>Descubrí qué personaje sos según tus respuestas!</h2>
+</div>
+
+<form id="quiz">
+  <div class="question">
+    <p>1️⃣ Ves que alguien está siendo acosado en Hogwarts…</p>
+    <label><input type="radio" name="q1" value="harry"> <img class="mini-img" src="https://i.imgur.com/HH0iZjw.png"> Intervenís sin pensarlo</label>
+    <label><input type="radio" name="q1" value="hermione"> <img class="mini-img" src="https://i.imgur.com/1SFFN5Y.png"> Buscás una solución justa</label>
+    <label><input type="radio" name="q1" value="ron"> <img class="mini-img" src="https://i.imgur.com/5YZU9DG.png"> Lo defendés aunque tengas miedo</label>
+    <label><input type="radio" name="q1" value="draco"> <img class="mini-img" src="https://i.imgur.com/4RyE4YN.png"> Mirás desde lejos, no es tu problema</label>
+    <label><input type="radio" name="q1" value="luna"> <img class="mini-img" src="https://i.imgur.com/N2Ddx2q.png"> Intentás calmar la situación con empatía</label>
+    <label><input type="radio" name="q1" value="ginny"> <img class="mini-img" src="https://i.imgur.com/1KfoJZV.png"> Intervengo pero con astucia</label>
+    <label><input type="radio" name="q1" value="voldemort"> <img class="mini-img" src="https://i.imgur.com/RQ6kzIY.png"> Aprovecho la situación a mi favor</label>
+  </div>
+
+  <div class="question">
+    <p>2️⃣ En una batalla importante vos…</p>
+    <label><input type="radio" name="q2" value="harry"> Liderás aunque no quieras</label>
+    <label><input type="radio" name="q2" value="hermione"> Pensás la mejor estrategia</label>
+    <label><input type="radio" name="q2" value="ron"> Protegés a tus amigos</label>
+    <label><input type="radio" name="q2" value="draco"> Dudás entre lo correcto y lo que te enseñaron</label>
+    <label><input type="radio" name="q2" value="luna"> Confiás en tu intuición</label>
+    <label><input type="radio" name="q2" value="ginny"> Peleo con valentía y estrategia</label>
+    <label><input type="radio" name="q2" value="voldemort"> Manipulo desde las sombras</label>
+  </div>
+
+  <div class="question">
+    <p>3️⃣ Tu mayor fortaleza es…</p>
+    <label><input type="radio" name="q3" value="harry"> Valentía</label>
+    <label><input type="radio" name="q3" value="hermione"> Inteligencia</label>
+    <label><input type="radio" name="q3" value="ron"> Lealtad</label>
+    <label><input type="radio" name="q3" value="draco"> Ambición</label>
+    <label><input type="radio" name="q3" value="luna"> Originalidad</label>
+    <label><input type="radio" name="q3" value="ginny"> Determinación</label>
+    <label><input type="radio" name="q3" value="voldemort"> Obsesión por el poder</label>
+  </div>
+
+  <div class="question">
+    <p>4️⃣ Dumbledore para vos representa…</p>
+    <label><input type="radio" name="q4" value="harry"> Un guía</label>
+    <label><input type="radio" name="q4" value="hermione"> Sabiduría</label>
+    <label><input type="radio" name="q4" value="ron"> Protección</label>
+    <label><input type="radio" name="q4" value="draco"> Manipulación</label>
+    <label><input type="radio" name="q4" value="luna"> Confianza en lo invisible</label>
+    <label><input type="radio" name="q4" value="ginny"> Inspiración</label>
+    <label><input type="radio" name="q4" value="voldemort"> Debilidad que explotar</label>
+  </div>
+
+  <div class="question">
+    <p>5️⃣ Si rompés una regla…</p>
+    <label><input type="radio" name="q5" value="harry"> Es por una buena causa</label>
+    <label><input type="radio" name="q5" value="hermione"> Solo si es necesario</label>
+    <label><input type="radio" name="q5" value="ron"> Seguís a tus amigos</label>
+    <label><input type="radio" name="q5" value="draco"> Si te beneficia</label>
+    <label><input type="radio" name="q5" value="luna"> Las reglas son relativas</label>
+    <label><input type="radio" name="q5" value="ginny"> Solo si es necesario para proteger a alguien</label>
+    <label><input type="radio" name="q5" value="voldemort"> Si me da ventaja, siempre</label>
+  </div>
+
+  <button type="button" onclick="calcularResultado()">✨ Ver resultado</button>
+</form>
+
+<div id="resultado"></div>
+
+<audio id="audioMagia" src="https://orangefreesounds.com/wp-content/uploads/2022/12/Magic-chimes-sound-effect.mp3"></audio>
+
+<script>
+function generarParticulas(){
+  for(let i=0;i<30;i++){
+    const p=document.createElement('div');
+    p.className='particula';
+    p.style.left=Math.random()*window.innerWidth+'px';
+    p.style.top=window.innerHeight+Math.random()*200+'px';
+    p.style.animationDuration=(3+Math.random()*3)+'s';
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),6000);
+  }
+}
+setInterval(generarParticulas,500);
+
+document.addEventListener('mousemove', e=>{
+  const varita=document.querySelector('.varita');
+  if(varita)varita.style.left=(e.clientX)+'px';
+});
+
+function calcularResultado(){
+  const puntos={harry:0,hermione:0,ron:0,draco:0,luna:0,ginny:0,voldemort:0};
+  document.querySelectorAll('input[type="radio"]:checked').forEach(r=>puntos[r.value]++);
+  let personaje="",max=0;
+  for(let p in puntos) if(puntos[p]>max){max=puntos[p];personaje=p;}
+  const descripciones={
+    harry:"⚡ Sos Harry Potter: valiente, protector y capaz de sacrificarte por los demás.",
+    hermione:"📚 Sos Hermione Granger: inteligente, justa y siempre un paso adelante.",
+    ron:"🔥 Sos Ron Weasley: leal, humano y con un gran corazón.",
+    draco:"🐍 Sos Draco Malfoy: complejo, ambicioso y marcado por tus conflictos internos.",
+    luna:"🌙 Sos Luna Lovegood: auténtica, sensible y ves lo que otros no.",
+    ginny:"🩸 Sos Ginny Weasley: valiente, decidida y con una chispa rebelde.",
+    voldemort:"💀 Sos Voldemort: ambicioso, obsesivo y capaz de todo por el poder."
+  };
+  const colores={harry:"#c42b2b",hermione:"#c42b2b",ron:"#c42b2b",ginny:"#c42b2b",draco:"#2eb82e",luna:"#2a52be",voldemort:"#2eb82e"};
+  const imagenesPersonaje={
+    harry:"https://i.imgur.com/HH0iZjw.png",
+    hermione:"https://i.imgur.com/1SFFN5Y.png",
+    ron:"https://i.imgur.com/5YZU9DG.png",
+    draco:"https://i.imgur.com/4RyE4YN.png",
+    luna:"https://i.imgur.com/N2Ddx2q.png",
+    ginny:"https://i.imgur.com/1KfoJZV.png",
+    voldemort:"https://i.imgur.com/RQ6kzIY.png"
+  };
+  const resultadoDiv=document.getElementById("resultado");
+  resultadoDiv.innerHTML=`<div class="varita"></div>
+    <img src="${imagenesPersonaje[personaje]}" alt="${personaje}" class="personaje-img">
+    <p>${descripciones[personaje]}</p>`;
+  crearChispas(resultadoDiv,colores[personaje]);
+  const audio=document.getElementById("audioMagia");
+  audio.currentTime=0;
+  audio.play();
+}
+
+function crearChispas(contenedor,color){
+  for(let i=0;i<15;i++){
+    const chispa=document.createElement("div");
+    chispa.className="chispa";
+    chispa.style.background=color;
+    chispa.style.setProperty('--x',(Math.random()*2-1).toFixed(2));
+    chispa.style.setProperty('--y',(Math.random()*1).toFixed(2));
+    contenedor.appendChild(chispa);
+    setTimeout(()=>chispa.remove(),800);
+  }
+}
+</script>
+
+</body>
+</html>
